@@ -685,7 +685,18 @@ ARjs.MarkerControls.prototype._initArtoolkit = function () {
 
     function handleNFT(descriptorsUrl, arController) {
         // create a Worker to handle loading of NFT marker and tracking of it
-        var worker = new Worker(THREEx.ArToolkitContext.baseURL + '../three.js/vendor/jsartoolkit5/js/artoolkit.worker.js');
+        var basePath = self.origin;
+        var workerPath = function () {
+          var path;
+          if (basePath == 'localhost' || 'http://127.0.0.1:3000'){
+            path = THREEx.ArToolkitContext.baseURL + '../three.js/vendor/jsartoolkit5/js/artoolkit.worker.js';
+          } else if (basePath == 'https://codepen.io') {
+            path = "https://raw.githack.com/AR-js-org/AR.js/master/three.js/vendor/jsartoolkit5/js/artoolkit.worker.js"
+          }
+          return path;
+        }
+        wPath = workerPath();
+        var worker = new Worker(wPath);
 
         window.addEventListener('arjs-video-loaded', function (ev) {
             var video = ev.detail.component;
