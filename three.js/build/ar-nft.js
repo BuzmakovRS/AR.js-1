@@ -685,13 +685,14 @@ ARjs.MarkerControls.prototype._initArtoolkit = function () {
 
     function handleNFT(descriptorsUrl, arController) {
         // create a Worker to handle loading of NFT marker and tracking of it
-        var basePath = self.origin;
-        var workerPath = function () {
+        var basePath = window.origin;
+        console.log(basePath);
+        var workerPath = function (basePath) {
           var path;
           if (basePath == 'localhost' || 'http://127.0.0.1:3000'){
             path = THREEx.ArToolkitContext.baseURL + '../three.js/vendor/jsartoolkit5/js/artoolkit.worker.js';
           } else if (basePath == 'https://codepen.io') {
-            path = "https://raw.githack.com/AR-js-org/AR.js/master/three.js/vendor/jsartoolkit5/js/artoolkit.worker.js"
+            path = "https://cors-anywhere.herokuapp.com/https://raw.githack.com/AR-js-org/AR.js/master/three.js/vendor/jsartoolkit5/js/artoolkit.worker.js"
           }
           return path;
         }

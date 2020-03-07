@@ -272,7 +272,7 @@ ARjs.MarkerControls.prototype._initArtoolkit = function () {
 
     function handleNFT(descriptorsUrl, arController) {
         // create a Worker to handle loading of NFT marker and tracking of it
-        var basePath = self.origin;
+        var basePath = window.origin;
         console.log(basePath);
         var workerPath = function (basePath) {
           var path;
