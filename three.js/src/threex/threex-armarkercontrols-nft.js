@@ -274,7 +274,7 @@ ARjs.MarkerControls.prototype._initArtoolkit = function () {
         // create a Worker to handle loading of NFT marker and tracking of it
         var basePath = self.origin;
         console.log(basePath);
-        var workerPath = function () {
+        var workerPath = function (basePath) {
           var path;
           if (basePath == 'localhost' || 'http://127.0.0.1:3000'){
             path = THREEx.ArToolkitContext.baseURL + '../three.js/vendor/jsartoolkit5/js/artoolkit.worker.js';
