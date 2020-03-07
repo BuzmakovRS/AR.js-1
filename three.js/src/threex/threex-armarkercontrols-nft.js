@@ -276,9 +276,9 @@ ARjs.MarkerControls.prototype._initArtoolkit = function () {
         console.log(basePath);
         var workerPath = function (basePath) {
           var path;
-          if (basePath == 'localhost' || 'http://127.0.0.1:3000'){
+          if (basePath == 'localhost' || basePath == 'http://127.0.0.1:3000'){
             path = THREEx.ArToolkitContext.baseURL + '../three.js/vendor/jsartoolkit5/js/artoolkit.worker.js';
-          } else if (basePath == 'https://codepen.io' || 'https://cdpn.io') {
+          } else if (basePath == 'https://codepen.io' || basePath == 'https://cdpn.io') {
             path = "https://cors-anywhere.herokuapp.com/https://raw.githack.com/AR-js-org/AR.js/master/three.js/vendor/jsartoolkit5/js/artoolkit.worker.js"
           }
           return path;
